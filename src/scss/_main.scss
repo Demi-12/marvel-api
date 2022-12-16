@@ -1,0 +1,38 @@
+.main-container {
+    min-height: 50%;
+    margin: 0.5rem;
+    padding-bottom: 0.5rem;
+    overflow: auto;
+
+    .body {
+        margin-top: 1rem;
+        padding: 1rem;
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 1rem;
+        scroll-snap-type: mandatory;
+        scroll-snap-points-y: repeat(300px);
+        scroll-snap-type: y mandatory;
+    }
+
+    /* width */
+    .body::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    .body::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    .body::-webkit-scrollbar-thumb {
+        background: var(--marvelRed);
+    }
+
+    /* Handle on hover */
+    .body::-webkit-scrollbar-thumb:hover {
+        background: var(--marvelDarkRed);
+    }
+}

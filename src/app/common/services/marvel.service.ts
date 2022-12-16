@@ -19,14 +19,17 @@ export class MarvelService {
 
   constructor(private apiService: ApiService) { }
 
-  marvelGet(url: string, filters?: MarvelFilters): Observable<MarvelResponse<any>> {
+  marvelGet(url: string, filters?: any): Observable<MarvelResponse<any>> {
     this.ts = new Date().toISOString();
     const hash = md5(this.ts + this.PRIVATE_API_KEY + this.PUBLIC_API_KEY);
-
+    console.log(filters)
     let final_url = `${url}?ts=${this.ts}&apikey=${this.PUBLIC_API_KEY}&hash=${hash}`;
     if (filters) {
-      Object.keys(filters).forEach(filter_key => {
-        final_url += `&${filter_key}=${filters}`
+      Object.keys(filters as any).forEach((filter_key: any) => {
+        if (filters[filter_key]) {
+          final_url += `&${filter_key}=${filters[filter_key]}`
+        }
+
       })
     }
     return this.apiService.get(final_url);
@@ -34,15 +37,15 @@ export class MarvelService {
 
   //Characters
 
-  getAllCharacters(): Observable<MarvelResponse<MarvelCharacter[]>> {
+  getAllCharacters(filters?: MarvelFilters): Observable<MarvelResponse<MarvelCharacter[]>> {
     const url = this.URI + "characters";
-    return this.marvelGet(url);
+    return this.marvelGet(url, filters);
   }
 
-  getCharacterById(id: string, obj?: string): Observable<MarvelResponse<MarvelCharacter>> {
+  getCharacterById(id: string, filter?: string): Observable<MarvelResponse<MarvelCharacter>> {
     let url = this.URI + "characters/" + id;
-    if (obj) {
-      url += obj;
+    if (filter) {
+      url += filter;
     }
     return this.marvelGet(url);
   }

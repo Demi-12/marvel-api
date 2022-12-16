@@ -22,7 +22,7 @@ import { HttpInterceptorService } from './common/services/http-interceptor.servi
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    CustomCommonModule
+    CustomCommonModule,
   ],
   providers: [ApiService, {
     provide: HTTP_INTERCEPTORS,

@@ -1,11 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import './scss/main';
+@import './scss/cards';
 
-html,
-body {
+
+:root {
+    --marvelRed: rgb(236, 29, 36);
+    --marvelDarkRed: rgb(212, 26, 32);
+    --marvelWhite: rgb(254, 254, 254);
+    --marvelBlack: #202020;
+}
+
+html {
     height: 100%;
 }
 
 body {
+    height: 100%;
+}
+
+html,
+body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-family: 'Marvel', sans-serif;
+    font-weight: 500;
+    overflow: auto;
+    background-color: #181818;
 }

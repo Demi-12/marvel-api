@@ -1,3 +1,22 @@
-<p>dashboard works!</p>
+<div class="main-container">
+    <div class="toolbar">
+        <button mat-raised-button (click)="makeRequest()">Search</button>
+    </div>
+    <div class="body">
+        <section class="character-card" *ngFor="let character of characters"
+            [style]="'background-image: url(' + character.thumbnail?.path + '.' + character.thumbnail?.extension + ')'">
+            <section class="character-details">
+                <div class="character-name">
+                    {{character.name}}
+                </div>
+                <div class="character-description">
+                    {{character.description}}
+                </div>
+            </section>
+        </section>
+        <section class="direction" *ngIf="this.offset < this.characters.length" (click)="nextPage()">
+            <mat-icon>chevron_right</mat-icon>
+        </section>
 
-<button mat-raised-button (click)="makeRequest()">Basic</button>
+    </div>
+</div>
