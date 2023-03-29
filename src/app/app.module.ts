@@ -10,7 +10,7 @@ import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common
 
 
 import { ApiService } from './common/services/api.service';
-import { HttpInterceptorService } from './common/services/http-interceptor.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,12 +23,9 @@ import { HttpInterceptorService } from './common/services/http-interceptor.servi
     AppRoutingModule,
     BrowserAnimationsModule,
     CustomCommonModule,
+    ReactiveFormsModule
   ],
-  providers: [ApiService, {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpInterceptorService,
-    multi: true
-  },],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

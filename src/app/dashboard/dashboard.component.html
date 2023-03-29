@@ -1,22 +1,26 @@
 <div class="main-container">
     <div class="toolbar">
-        <button mat-raised-button (click)="makeRequest()">Search</button>
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Search</mat-label>
+            <input matInput placeholder="Ex. Spider-Man, Iron Man..." [formControl]="this.searchInput">
+            <mat-icon matSuffix color="primary">search</mat-icon>
+        </mat-form-field>
     </div>
-    <div class="body">
+    <div class="body" #cardContainer>
         <section class="character-card" *ngFor="let character of characters"
-            [style]="'background-image: url(' + character.thumbnail?.path + '.' + character.thumbnail?.extension + ')'">
+            [style]="'--background: url(' + character.thumbnail?.path + '.' + character.thumbnail?.extension + ')'">
             <section class="character-details">
                 <div class="character-name">
-                    {{character.name}}
+                    <span>
+                        {{character.name}}
+                    </span>
                 </div>
                 <div class="character-description">
-                    {{character.description}}
+                    <span class="description-text">
+                        {{character.description || 'No data avaiable'}}
+                    </span>
                 </div>
             </section>
         </section>
-        <section class="direction" *ngIf="this.offset < this.characters.length" (click)="nextPage()">
-            <mat-icon>chevron_right</mat-icon>
-        </section>
-
     </div>
 </div>

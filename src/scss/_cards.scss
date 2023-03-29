@@ -8,9 +8,12 @@
         no-repeat;
     background-position-x: center;
     background-position-y: top;
-    background-size: contain;
     background-color: var(--marvelBlack);
-    scroll-snap-align: start;
+    scroll-snap-align: top;
+    transition: all;
+    transition-duration: 1s;
+    background-size: contain;
+    background-image: var(--background);
 
 
     .character-details {
@@ -20,6 +23,8 @@
         margin-top: auto;
         display: flex;
         flex-direction: column;
+        transition: all;
+        transition-duration: 1s;
 
         .character-name {
             margin-top: auto;
@@ -35,12 +40,20 @@
             text-align: center;
             background-color: var(--marvelRed);
             color: var(--marvelWhite);
+            transition: all;
+            transition-duration: 1.5s;
         }
+
 
         .character-description {
             padding: 0rem;
             height: 0%;
-            visibility: hidden;
+            transition: all;
+            transition-duration: 1s;
+
+            .description-text {
+                visibility: hidden;
+            }
         }
     }
 }
@@ -59,8 +72,13 @@
             padding: 0.5rem;
             height: 100%;
             overflow: hidden;
-            visibility: visible;
+
+            .description-text {
+                visibility: visible;
+            }
+
         }
+
     }
 }
 

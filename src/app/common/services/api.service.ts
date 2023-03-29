@@ -37,14 +37,4 @@ export class ApiService {
     return this.http.get(url, { responseType: 'blob' });
   }
 
-  delete(url: string, data: any): Observable<any> {
-    return this.http.delete(url, data);
-  }
-
-  upload(url: string, file: File): Observable<HttpEvent<any>> {
-    const formData: FormData = new FormData();
-    formData.append('file', file)
-    return this.http.post<any>(url, formData, { reportProgress: true, observe: 'events' });
-  }
-
 }

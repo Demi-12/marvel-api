@@ -1,6 +1,19 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$marvel-red: mat.define-palette(mat.$red-palette, 600, 400, 800);
+$marvel-grey: mat.define-palette(mat.$grey-palette, 100, 300, 50);
+
+$my-theme: mat.define-dark-theme((color: (primary: $marvel-red,
+                accent: $marvel-grey,
+            )));
+
+@include mat.all-component-themes($my-theme);
+
 @import './scss/main';
 @import './scss/cards';
-
+@import './scss/inputs';
 
 :root {
     --marvelRed: rgb(236, 29, 36);

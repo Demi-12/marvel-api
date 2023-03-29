@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { md5 } from '../helpers/md5';
 import { MarvelCharacter } from '../models/marvelCharacter';
 import { MarvelFilters, MarvelResponse } from '../models/marvelApi';
 import { ApiService } from './api.service';
-
-
+import { MD5 } from 'crypto-js';
 
 
 @Injectable({
@@ -21,8 +19,7 @@ export class MarvelService {
 
   marvelGet(url: string, filters?: any): Observable<MarvelResponse<any>> {
     this.ts = new Date().toISOString();
-    const hash = md5(this.ts + this.PRIVATE_API_KEY + this.PUBLIC_API_KEY);
-    console.log(filters)
+    const hash = MD5(this.ts + this.PRIVATE_API_KEY + this.PUBLIC_API_KEY);
     let final_url = `${url}?ts=${this.ts}&apikey=${this.PUBLIC_API_KEY}&hash=${hash}`;
     if (filters) {
       Object.keys(filters as any).forEach((filter_key: any) => {
