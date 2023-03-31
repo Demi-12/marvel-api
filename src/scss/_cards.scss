@@ -14,6 +14,7 @@
     transition-duration: 1s;
     background-size: contain;
     background-image: var(--background);
+    overflow: hidden;
 
 
     .character-details {
@@ -56,9 +57,31 @@
             }
         }
     }
+
+    .info-button-container {
+        display: flex;
+        justify-content: flex-end;
+
+        .info-button {
+            visibility: hidden;
+            transition: all 1s;
+            top: -5rem;
+            animation: slide-top 0.4s linear both
+        }
+    }
 }
 
+
 .character-card:hover {
+
+    .info-button-container {
+        .info-button {
+            visibility: visible;
+            animation: slide-bottom 0.4s linear both
+        }
+    }
+
+
     .character-details {
         transition: all 0.2s;
         height: 45%;
@@ -91,4 +114,26 @@
     background-color: var(--marvelWhite);
     cursor: pointer;
     user-select: none;
+}
+
+
+
+@keyframes slide-bottom {
+    0% {
+        transform: translateY(0)
+    }
+
+    100% {
+        transform: translateY(5rem)
+    }
+}
+
+@keyframes slide-top {
+    0% {
+        transform: translateY(5rem)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
 }

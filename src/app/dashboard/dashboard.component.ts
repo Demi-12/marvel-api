@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { debounceTime, Subject } from 'rxjs';
 import { MarvelFilters } from '../common/models/marvelApi';
 import { MarvelCharacter } from '../common/models/marvelCharacter';
@@ -16,6 +17,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   //Classes
   characters: MarvelCharacter[] = [];
+  selectedHero: MarvelCharacter = new MarvelCharacter();
 
   //Pagination
   offset: number = 0;
@@ -24,7 +26,10 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
   searchInput: FormControl = new FormControl();
   searchTerm: string = '';
 
-  constructor(private marvelService: MarvelService) {
+  constructor(
+    private marvelService: MarvelService,
+    private router: Router
+  ) {
     this.searchInput.valueChanges.pipe(debounceTime(600)).subscribe({
       next: (text: string) => {
         this.searchTerm = text;
@@ -75,14 +80,16 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnDestroy {
 
   scrollHandler() {
     const element = this.cardContainer.nativeElement;
-    const atBottom = element.scrollHeight - element.scrollTop <= element.clientHeight;
+    const atBottom = element.scrollHeight - element.scrollTop <= element.clientHeight + 200;
     const moreCharacters = this.offset < this.characters.length
 
     if (atBottom && moreCharacters) {
       this.offset += 20;
-      this.makeRequest()
+      this.makeRequest();
     }
   }
+
+
 
 
 }
