@@ -1,0 +1,12 @@
+.searchInput {
+    width: 50%;
+
+    @media screen and (max-width: 765px) {
+        width: 100%;
+    }
+}
+
+.toolbar {
+    display: flex;
+    justify-content: center;
+}

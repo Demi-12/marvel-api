@@ -1,0 +1,45 @@
+.main-container {
+    min-height: 50%;
+    margin: 0.5rem;
+    padding-bottom: 0.5rem;
+    overflow: auto;
+
+    .toolbar {
+        padding: 1rem;
+        padding-bottom: 0rem;
+    }
+
+    .body {
+        padding: .5rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        overflow-x: hidden;
+        overflow-y: auto;
+        gap: 1rem;
+        max-height: 80vh;
+        scroll-snap-type: mandatory;
+        scroll-snap-points-x: repeat(300px);
+        scroll-snap-type: x mandatory;
+        transition: all 1s;
+    }
+
+    /* width */
+    .body::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    .body::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    .body::-webkit-scrollbar-thumb {
+        background: var(--marvelRed);
+    }
+
+    /* Handle on hover */
+    .body::-webkit-scrollbar-thumb:hover {
+        background: var(--marvelDarkRed);
+    }
+}

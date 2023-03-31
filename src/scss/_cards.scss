@@ -1,0 +1,139 @@
+.character-card {
+    min-height: 30rem;
+    min-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    color: var(--marvelWhite);
+    background-repeat: no-repeat,
+        no-repeat;
+    background-position-x: center;
+    background-position-y: top;
+    background-color: var(--marvelBlack);
+    scroll-snap-align: top;
+    transition: all;
+    transition-duration: 1s;
+    background-size: contain;
+    background-image: var(--background);
+    overflow: hidden;
+
+
+    .character-details {
+        transition: all 0.2s;
+        background-color: var(--marvelBlack);
+        height: 10%;
+        margin-top: auto;
+        display: flex;
+        flex-direction: column;
+        transition: all;
+        transition-duration: 1s;
+
+        .character-name {
+            margin-top: auto;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+            font-weight: bold;
+            font-size: 20px;
+            min-height: 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--marvelRed);
+            color: var(--marvelWhite);
+            transition: all;
+            transition-duration: 1.5s;
+        }
+
+
+        .character-description {
+            padding: 0rem;
+            height: 0%;
+            transition: all;
+            transition-duration: 1s;
+
+            .description-text {
+                visibility: hidden;
+            }
+        }
+    }
+
+    .info-button-container {
+        display: flex;
+        justify-content: flex-end;
+
+        .info-button {
+            visibility: hidden;
+            transition: all 1s;
+            top: -5rem;
+            animation: slide-top 0.4s linear both
+        }
+    }
+}
+
+
+.character-card:hover {
+
+    .info-button-container {
+        .info-button {
+            visibility: visible;
+            animation: slide-bottom 0.4s linear both
+        }
+    }
+
+
+    .character-details {
+        transition: all 0.2s;
+        height: 45%;
+
+        .character-name {
+            margin-top: 0;
+        }
+
+        .character-description {
+            transition: all 0.2s;
+            padding: 0.5rem;
+            height: 100%;
+            overflow: hidden;
+
+            .description-text {
+                visibility: visible;
+            }
+
+        }
+
+    }
+}
+
+.direction {
+    position: sticky;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    background-color: var(--marvelWhite);
+    cursor: pointer;
+    user-select: none;
+}
+
+
+
+@keyframes slide-bottom {
+    0% {
+        transform: translateY(0)
+    }
+
+    100% {
+        transform: translateY(5rem)
+    }
+}
+
+@keyframes slide-top {
+    0% {
+        transform: translateY(5rem)
+    }
+
+    100% {
+        transform: translateY(0)
+    }
+}

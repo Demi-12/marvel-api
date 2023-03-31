@@ -1,0 +1,41 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$marvel-red: mat.define-palette(mat.$red-palette, 600, 400, 800);
+$marvel-grey: mat.define-palette(mat.$grey-palette, 100, 300, 50);
+
+$my-theme: mat.define-dark-theme((color: (primary: $marvel-red,
+                accent: $marvel-grey,
+            )));
+
+@include mat.all-component-themes($my-theme);
+
+@import './scss/main';
+@import './scss/cards';
+@import './scss/inputs';
+
+:root {
+    --marvelRed: rgb(236, 29, 36);
+    --marvelDarkRed: rgb(212, 26, 32);
+    --marvelWhite: rgb(254, 254, 254);
+    --marvelBlack: #202020;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+html,
+body {
+    margin: 0;
+    font-weight: 400;
+    font-family: 'Marvel', sans-serif;
+    font-weight: 500;
+    background-color: #181818;
+    overflow: hidden;
+}
